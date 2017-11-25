@@ -60,7 +60,9 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
                 
                 <input class="btn btn-primary btn-block btn-lg btn-signin" type="submit" name="Iniciar">Iniciar </input>
             </form>
+
             <a href="#" class="forgot-password"> </a><a href="registrousuario.php" style="color:#333">No tienes cuenta? Registrate Aquí!</a></div>
+        <div class="hidden error" style="color:#333">Error</div>
     </div>
     
 </body>
@@ -76,7 +78,14 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
         /* Alerts the results */
         posting.done(function( data ) {
-            console.log(data);
+            var obj = JSON.parse(data);
+            if (obj.success){
+                $('.error').removeClass('hidden');
+            }
+            else
+            {
+                $('.error').addClass('hidden');
+            }
         });
     });
 </script>

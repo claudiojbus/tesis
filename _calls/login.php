@@ -12,6 +12,10 @@ $params = $_POST;
 if ($params != null){
     $usuario = new usuario();
     $login  = $usuario->getUser($params['loginUsername'],$params['loginPassword']);
-    var_dump($login);
+    print_r(
+        json_encode(
+            array('success'=>($login == 0)?false:true)
+        )
+    );
 }
 ?>
