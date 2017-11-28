@@ -14,8 +14,8 @@ class usuario
     private $table = array(
         'name' =>'usuario',
         'id'=>'idusuario',
-        'fileds'=> array('email','pass')
-    );
+        'fileds'=> array('email','contrasena')
+    ); 
 
 
     private $db_conncetions;
@@ -35,7 +35,7 @@ class usuario
         $this->connections = $db_conncetions->connect();
         if($loginUsername && $loginPassword){
 
-            $query = 'SELECT * FROM '.$this->table['name'].' WHERE email=\''.$loginUsername.'\' AND pass= \''.$loginPassword.'\'';
+            $query = 'SELECT * FROM '.$this->table['name'].' WHERE email=\''.$loginUsername.'\' AND contrasena= \''.$loginPassword.'\'';
             $LoginRS = mysqli_query($this->connections,$query) or die(mysql_error());
             $loginFoundUser = mysqli_num_rows($LoginRS);
             //mysqli_stmt_close($stmt);
