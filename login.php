@@ -1,15 +1,12 @@
 <?php require_once('Connections/conexion.php'); ?>
 <?php
-
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
   }
-
   $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
-
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
@@ -75,11 +72,12 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
         var URL = '_calls/login.php';
         var $form = $( this );
         var posting = $.post( URL, { loginUsername: $('#inputEmail').val(), loginPassword: $('#inputPassword').val() } );
-
         /* Alerts the results */
         posting.done(function( data ) {
             var obj = JSON.parse(data);
             if (obj.success){
+                location.href="index.html";
+                alert ("Bienvenido");
                 $('.error').removeClass('hidden');
             }
             else
