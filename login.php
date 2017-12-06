@@ -73,13 +73,15 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
         /* Alerts the results */
         posting.done(function( data ) {
             var obj = JSON.parse(data);
+            console.log(obj);
             if (obj.success){
-                location.href="index.html";
-                $('.error').removeClass('hidden');
+                $('.error').addClass('hidden');
+                location.href= obj.data[5];
+
             }
             else
             {
-                $('.error').addClass('hidden');
+                $('.error').removeClass('hidden');
             }
         });
     });

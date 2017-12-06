@@ -11,10 +11,15 @@ $params = $_POST;
 
 if ($params != null){
     $usuario = new usuario();
-    $login  = $usuario->getUser($params['loginUsername'],$params['loginPassword']);
+    $login  = json_decode($usuario->getUser($params['loginUsername'],$params['loginPassword']));
+
+    $success = ($login->total == 0 )?false:true;
     print_r(
         json_encode(
-            array('success'=>($login == 0)?false:true)
+            array(
+                'success'=>$success,
+                'data'=>$login->data
+            )
         )
     );
 }
